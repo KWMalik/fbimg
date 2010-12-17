@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$("#searchbox").keypress(function(e){ if(e.which == 13) search($("#searchbox").val()); });
 });
 function refresh(searchterm){
-	var limit = 250;
+	var limit = 200;
 	$.getJSON("http://graph.facebook.com/search?callback=?",{
             q:          searchterm,
             type:       "post",
@@ -15,16 +15,17 @@ function refresh(searchterm){
 		    }
 		    $.each(json.data, function(i, e){
 			    if(json.data[i].picture != null){
-				    $("#test").append("<img id='photo"+i+"' />");
+				    $("#test").append("<img id='photo"+i+"' class='pic' />");
 				    imagesToLoad++;
-				    $("#photo"+i).attr("src", json.data[i].picture).load(imageLoaded);
+				    $("#photo"+i).attr("src", json.data[i].picture).load(imageLoaded(i));
 			    }
 		    });					
 	    }
     );
 }
-function imageLoaded(){
+function imageLoaded(i){
 	imagesToLoad--;
+    $("#photo"+i).fadeIn();
 	if(imagesToLoad == 0){
 		searchEnd();
 	}
@@ -32,9 +33,8 @@ function imageLoaded(){
 function search(query){
     if (query == "") return false;
 	error.clear();
-	$("#test").fadeOut(function(){
-		$("#test").html("");
-	});
+	$("#header").slideUp();
+    $("#test").html("");
 	$("#search").fadeOut(function(){
 		$("#load").fadeIn();
 	});
@@ -43,8 +43,6 @@ function search(query){
 function searchEnd(){
 	$("#load").fadeOut();
 	$("#search").fadeIn();
-	$("#header").slideUp();
-	$("#test").fadeIn();
 }
 var error = {
 	add: function (msg) {
