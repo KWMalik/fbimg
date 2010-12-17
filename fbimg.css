@@ -1,2 +1,32 @@
+body{
+	margin: 0;
+	padding: 0;
+}
 #load{display:none;}
-
+#header{
+	margin: 50px auto;
+	background: url("logo.png") transparent no-repeat center;
+	height: 219px;
+	width: 646px;
+}
+#search{
+	width: 600px;
+	text-align: center;
+	margin: 0 auto;
+}
+#search input[type=text]{
+	height: 40px;
+	font-size: 2em;
+	width: 600px;
+	margin-top: 10px;
+	color: #ccc;
+}
+#searchwrapper{
+	width: 100%;
+	background: #3b5998;
+	height: 60px;
+}
+#test{
+	width: 600px;
+	margin: 0 auto;
+}
