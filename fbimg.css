@@ -13,7 +13,7 @@ body{
 	width: 646px;
 	text-align: center;
 }
-#search, #error, #test, #load{
+#search, #error, #imgs, #load{
 	width: 600px;
 	text-align: center;
 	margin: 0 auto;
@@ -33,10 +33,10 @@ body{
 .pic{
 	display: none;
 }
-#test{
+#imgs{
 	padding: 20px;
 }
-#test img{
+#imgs img{
 	margin: 5px;
 }
 #error {

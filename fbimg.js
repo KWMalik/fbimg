@@ -15,9 +15,9 @@ function refresh(searchterm){
 		    }
 		    $.each(json.data, function(i, e){
 			    if(json.data[i].picture != null){
-				    $("#test").append("<img id='photo"+i+"' class='pic' />");
+				    $("#imgs").append("<img id='photo"+i+"' class='pic' />");
 				    imagesToLoad++;
-				    $("#photo"+i).attr("src", json.data[i].picture).load(imageLoaded(i));
+				    $("#photo"+i).attr("src", json.data[i].picture).load(function(){imageLoaded(i);});
 			    }
 		    });					
 	    }
@@ -34,7 +34,7 @@ function search(query){
     if (query == "") return false;
 	error.clear();
 	$("#header").slideUp();
-    $("#test").html("");
+    $("#imgs").html("");
 	$("#search").fadeOut(function(){
 		$("#load").fadeIn();
 	});
