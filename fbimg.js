@@ -26,6 +26,7 @@ function imageLoaded(){
 }
 function search(query){
     if (query == "") return false;
+	error.clear();
 	$("#test").fadeOut(function(){
 		$("#test").html("");
 	});
@@ -40,10 +41,10 @@ function searchEnd(){
 	$("#test").fadeIn();
 }
 var error = {
-	function add(error) {
+	add: function (error) {
 		$("#error").html(error).slideDown();
 	},
-	function clear() {
+	clear: function () {
 		$("#error").slideUp(function(){$(this).html("")});
 	}
 }
