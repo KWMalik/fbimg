@@ -1,6 +1,7 @@
 var imagesToLoad = 0;
 $(document).ready(function(){
 	$("#searchbox").keypress(function(e){ if(e.which == 13) search($("#searchbox").val()); });
+	$("#searchbox").bind("focus", function(){$("#searchbox").val("");});
 });
 function refresh(searchterm){
 	var limit = 200;
@@ -11,8 +12,7 @@ function refresh(searchterm){
         },function(json){
             if (!json || !json.data || json.data.length == 0) {
 			    error.add("No Results!");
-			    searchEnd();
-		    }
+			}
 		    $.each(json.data, function(i, e){
 			    if(json.data[i].picture != null){
 				    $("#imgs").append("<img id='photo"+i+"' class='pic' />");
@@ -36,9 +36,10 @@ function search(query){
 	$("#header").slideUp();
     $("#imgs").html("");
 	$("#search").fadeOut(function(){
-		$("#load").fadeIn();
+		$("#load").fadeIn(function(){
+			refresh(query);		
+		});
 	});
-	refresh(query);
 }
 function searchEnd(){
 	$("#load").fadeOut();
@@ -46,6 +47,8 @@ function searchEnd(){
 }
 var error = {
 	add: function (msg) {
+		$("#load").hide();
+		searchEnd();
 		$("#error").html(msg).slideDown();
 	},
 	clear: function () {
