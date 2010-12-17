@@ -30,8 +30,9 @@ function search(query){
 	$("#test").fadeOut(function(){
 		$("#test").html("");
 	});
-	$("#search").fadeOut();
-	$("#load").fadeIn();
+	$("#search").fadeOut(function(){
+		$("#load").fadeIn();
+	);
 	refresh(query);
 }
 function searchEnd(){

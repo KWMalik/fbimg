@@ -44,3 +44,14 @@ body{
 	width: 100%;
 	display: none;
 }
+#load{
+	padding-top: 20px;
+}
+#footer{
+	margin: 0 auto;
+	text-align: center;
+	color: #777;
+}
+#footer a{
+	color: #777;
+}
