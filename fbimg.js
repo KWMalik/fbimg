@@ -41,8 +41,8 @@ function searchEnd(){
 	$("#test").fadeIn();
 }
 var error = {
-	add: function (error) {
-		$("#error").html(error).slideDown();
+	add: function (msg) {
+		$("#error").html(msg).slideDown();
 	},
 	clear: function () {
 		$("#error").slideUp(function(){$(this).html("")});
