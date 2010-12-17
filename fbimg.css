@@ -1,6 +1,8 @@
 body{
 	margin: 0;
 	padding: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #222;
 }
 #load{
 	display:none;
@@ -33,4 +35,12 @@ body{
 }
 #test img{
 	margin: 5px;
+}
+#error {
+	background: #ccc;
+	color: #000;
+	font-size: 1.1em;
+	padding: 10px 0;
+	width: 100%;
+	display: none;
 }
