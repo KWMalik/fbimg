@@ -37,7 +37,7 @@ function search(query){
 	});
 	$("#search").fadeOut(function(){
 		$("#load").fadeIn();
-	);
+	});
 	refresh(query);
 }
 function searchEnd(){
