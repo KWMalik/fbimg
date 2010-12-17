@@ -27,6 +27,7 @@ function imageLoaded(){
 }
 function search(query){
     if (query == "") return false;
+    $("#error").html("");
 	$("#test").fadeOut(function(){
 		$("#test").html("");
 	});
