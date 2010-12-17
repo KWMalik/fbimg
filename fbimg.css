@@ -30,6 +30,9 @@ body{
 	background: #3b5998;
 	height: 60px;
 }
+.pic{
+	display: none;
+}
 #test{
 	padding: 20px;
 }
@@ -48,7 +51,7 @@ body{
 	padding-top: 20px;
 }
 #footer{
-	margin: 0 auto;
+	margin: 20px auto;
 	text-align: center;
 	color: #777;
 }
