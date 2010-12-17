@@ -1,0 +1,20 @@
+<head>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.getJSON("http://graph.facebook.com/search?q=thing&type=post&limit=250&callback=?",function(json){	
+				$.each(json.data, function(i, e){
+					if(json.data[i].picture != null){
+						$("#test").append("<img id='photo"+i+"' />");
+						$("#photo"+i).attr("src", json.data[i].picture);
+					}
+				});					
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="test">
+		
+	</div>
+</body>
