@@ -28,3 +28,9 @@ body{
 	background: #3b5998;
 	height: 60px;
 }
+#test{
+	padding: 20px;
+}
+#test img{
+	margin: 5px;
+}

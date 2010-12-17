@@ -1,13 +1,12 @@
 var imagesToLoad = 0;
 $(document).ready(function(){
-	//$("#searchbox").bind('blur', search);
 	$("#searchbox").keypress(function(e){ if(e.which == 13) search($("#searchbox").val()); });
 });
 function refresh(searchterm){
 	var limit = 250;
 	$.getJSON("http://graph.facebook.com/search?q="+encodeURI(searchterm)+"&type=post&limit="+limit+"&callback=?",function(json){
         if (json.data.length == 0) {
-			$("#error").html("No Results!");
+			error.add("No Results!");
 			searchEnd();
 		}
 		$.each(json.data, function(i, e){
@@ -34,9 +33,18 @@ function search(query){
 	$("#search").fadeOut();
 	$("#load").fadeIn();
 	refresh(query);
-	$("#test").fadeIn(function(){});	
 }
 function searchEnd(){
-		$("#load").fadeOut();
-		$("#search").fadeIn();
+	$("#load").fadeOut();
+	$("#search").fadeIn();
+	$("#header").slideUp();
+	$("#test").fadeIn();
+}
+var error = {
+	function add(error) {
+		$("#error").html(error).slideDown();
+	},
+	function clear() {
+		$("#error").slideUp(function(){$(this).html("")});
+	}
 }
