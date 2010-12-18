@@ -10,11 +10,12 @@ $(document).ready(function(){
     });
 	$("#searchbox").keypress(function(e){ if(e.which == 13) search($("#searchbox").val()); });
 	$("#searchbox").bind("focus", focusOnSearch);
-	if(window.location.hash != null){	//we are searching from something in URL
+	if(window.location.hash != null && window.location.hash.substr(1) != ""){	//we are searching from something in URL
 		$("#search input").css("color", "#333333");
 		$("#search input").val(window.location.hash.substr(1));
 		search(window.location.hash.substr(1));
 	}
+	$("a#smalllogo").click(reset);
 });
 function refresh(searchterm){
 	var limit = 200;
@@ -75,6 +76,16 @@ function search(query){
 			refresh(query);
 		});
 	});
+}
+function reset(){
+	$("#imgs").slideUp(function(){
+		$("#imgs").html("");
+		$("#imgs").slideDown();
+	});
+	$("#smalllogo").fadeOut();
+	$("#header").slideDown();
+	window.location.hash = "";
+	return false;
 }
 function searchEnd(){
 	$("#load").fadeOut(function(){
