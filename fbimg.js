@@ -75,13 +75,11 @@ function search(query){
 	});
 }
 function reset(){
-	$("#imgs").slideUp(function(){
-		$("#imgs").html("");
-		$("#imgs").slideDown();
-	});
+	$("#imgs").html("");
 	$("#smalllogo").fadeOut();
 	$("#header").slideDown();
 	window.location.hash = "";
+	searchEnd();
 	return false;
 }
 function searchEnd(){
