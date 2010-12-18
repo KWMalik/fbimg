@@ -10,6 +10,9 @@ $(document).ready(function(){
     });
 	$("#searchbox").keypress(function(e){ if(e.which == 13) search($("#searchbox").val()); });
 	$("#searchbox").bind("focus", focusOnSearch);
+	if(window.location.hash != null){	//we are searching from something in URL
+		search(window.location.hash);
+	}
 });
 function refresh(searchterm){
 	var limit = 200;
@@ -54,6 +57,7 @@ function focusOnSearch(){
 	$("#search input").val("");
 }
 function search(query){
+    window.location.hash = query; 
     if (query == "") return false;
 	error.clear();
 	$("#header").slideUp();
