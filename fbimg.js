@@ -36,10 +36,7 @@ function refresh(searchterm){
 							if(json.data[i].link != null) $("#imgs").append("<a href='"+json.data[i].link+"' id='link"+i+"' target='_blank'><img id='photo"+i+"' class='pic' /></a>");
 							else $("#imgs").append("<img id='photo"+i+"' class='pic' />");
 							imagesToLoad++;
-							$("#photo"+i)
-								.attr("src", json.data[i].picture)
-								.attr("title", json.data[i].name)
-								.load(function(){imageLoaded(i);});
+							$("#photo"+i).attr("src", json.data[i].picture).attr("title", json.data[i].name).load(function(){imageLoaded(i);});
 						}
 					});					
 				}
