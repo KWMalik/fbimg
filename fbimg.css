@@ -4,6 +4,9 @@ body{
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #222;
 }
+a img, img a, img {
+	border: none;
+}
 #load{
 	display:none;
 }
