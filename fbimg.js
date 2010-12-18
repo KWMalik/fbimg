@@ -13,23 +13,30 @@ $(document).ready(function(){
 });
 function refresh(searchterm){
 	var limit = 200;
-	$.getJSON("http://graph.facebook.com/search?callback=?",{
-            q:          searchterm,
-            type:       "post",
-            limit:      limit
-        },function(json){
-            if (!json || !json.data || json.data.length == 0) {
-			    error.add("No Results!");
-			}
-		    $.each(json.data, function(i, e){
-			    if(json.data[i].picture != null){
-				    $("#imgs").append("<img id='photo"+i+"' class='pic' />");
-				    imagesToLoad++;
-				    $("#photo"+i).attr("src", json.data[i].picture).load(function(){imageLoaded(i);});
-			    }
-		    });					
-	    }
-    );
+    FB.getLoginStatus(function(response) {
+        if (response.session) {
+            alert('logged in');
+        } else {
+            alert('no user');
+	        $.getJSON("http://graph.facebook.com/search?callback=?",{
+                    q:          searchterm,
+                    type:       "post",
+                    limit:      limit
+                },function(json){
+                    if (!json || !json.data || json.data.length == 0) {
+			            error.add("No Results!");
+			        }
+		            $.each(json.data, function(i, e){
+			            if(json.data[i].picture != null){
+				            $("#imgs").append("<img id='photo"+i+"' class='pic' />");
+				            imagesToLoad++;
+				            $("#photo"+i).attr("src", json.data[i].picture).load(function(){imageLoaded(i);});
+			            }
+		            });					
+	            }
+            );
+        }
+    });
 }
 function imageLoaded(i){
 	imagesToLoad--;
