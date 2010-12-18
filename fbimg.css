@@ -24,7 +24,7 @@ body{
 	height: 40px;
 	font-size: 2em;
 	width: 600px;
-	margin-top: 10px;
+	margin-top: 7px;
 	color: #ccc;
 }
 #searchwrapper{
@@ -42,11 +42,12 @@ body{
 	margin: 5px;
 }
 #error {
-	background: #ccc;
-	color: #000;
+	background: #6b89c8;
+	color: #fff;
 	font-size: 1.1em;
 	padding: 10px 0;
 	width: 100%;
+	font-weight: bold;
 	display: none;
 }
 #load{
