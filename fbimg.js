@@ -11,7 +11,9 @@ $(document).ready(function(){
 	$("#searchbox").keypress(function(e){ if(e.which == 13) search($("#searchbox").val()); });
 	$("#searchbox").bind("focus", focusOnSearch);
 	if(window.location.hash != null){	//we are searching from something in URL
-		search(window.location.hash);
+		$("#search input").css("color", "#333333");
+		$("#search input").val(window.location.hash.substr(1));
+		search(window.location.hash.substr(1));
 	}
 });
 function refresh(searchterm){
@@ -30,14 +32,13 @@ function refresh(searchterm){
 					}
 					$.each(json.data, function(i, e){
 						if(json.data[i].picture != null){
-							if(json.data[i].link != null) $("#imgs").append("<a href='"+json.data[i].link+"' id='link"+i+"'><img id='photo"+i+"' class='pic' /></a>");
+							if(json.data[i].link != null) $("#imgs").append("<a href='"+json.data[i].link+"' id='link"+i+"' target='_blank'><img id='photo"+i+"' class='pic' /></a>");
 							else $("#imgs").append("<img id='photo"+i+"' class='pic' />");
 							imagesToLoad++;
 							$("#photo"+i)
 								.attr("src", json.data[i].picture)
 								.attr("title", json.data[i].name)
 								.load(function(){imageLoaded(i);});
-							console.log(json.data[i]);
 						}
 					});					
 				}
