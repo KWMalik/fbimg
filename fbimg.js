@@ -53,7 +53,7 @@ function search(query){
 			$("#imgs").slideDown();
 		});
 	}
-	$("#search").fadeOut(function(){
+	$("#search input").fadeOut(function(){
 		$("#smalllogo").fadeIn();
 		$("#load").fadeIn(function(){
 			refresh(query);
@@ -61,8 +61,9 @@ function search(query){
 	});
 }
 function searchEnd(){
-	$("#load").fadeOut();
-	$("#search").fadeIn();
+	$("#load").fadeOut(function(){
+		$("#search input").fadeIn();
+	});
 }
 var error = {
 	add: function (msg) {
