@@ -25,7 +25,11 @@ function refresh(searchterm){
 			    if(json.data[i].picture != null){
 				    $("#imgs").append("<img id='photo"+i+"' class='pic' />");
 				    imagesToLoad++;
-				    $("#photo"+i).attr("src", json.data[i].picture).load(function(){imageLoaded(i);});
+				    $("#photo"+i)
+						.attr("src", json.data[i].picture)
+						.attr("title", json.data[i].name)
+						.load(function(){imageLoaded(i);});
+					console.log(json.data[i]);
 			    }
 		    });					
 	    }
