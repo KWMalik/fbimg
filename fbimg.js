@@ -16,34 +16,28 @@ $(document).ready(function(){
 });
 function refresh(searchterm){
 	var limit = 200;
-    FB.getLoginStatus(function(response) {
-        if (response.session) {
-        } else {
-		}
-			$.getJSON("http://graph.facebook.com/search?callback=?",{
-					q:          searchterm,
-					type:       "post",
-					limit:      limit
-				},function(json){
-					if (!json || !json.data || json.data.length == 0) {
-						error.add("No Results!");
-					}
-					$.each(json.data, function(i, e){
-						if(json.data[i].picture != null){
-							if(json.data[i].link != null) $("#imgs").append("<a href='"+json.data[i].link+"' id='link"+i+"'><img id='photo"+i+"' class='pic' /></a>");
-							else $("#imgs").append("<img id='photo"+i+"' class='pic' />");
-							imagesToLoad++;
-							$("#photo"+i)
-								.attr("src", json.data[i].picture)
-								.attr("title", json.data[i].name)
-								.load(function(){imageLoaded(i);});
-							console.log(json.data[i]);
-						}
-					});					
-				}
-			);
-        
-    });
+    FB.api('/search',{
+            q:          searchterm,
+            type:       "post",
+            limit:      limit
+        },function(json){
+            if (!json || !json.data || json.data.length == 0) {
+                error.add("No Results!");
+            }
+            $.each(json.data, function(i, e){
+                if(json.data[i].picture != null){
+                    if(json.data[i].link != null) $("#imgs").append("<a href='"+json.data[i].link+"' id='link"+i+"'><img id='photo"+i+"' class='pic' /></a>");
+                    else $("#imgs").append("<img id='photo"+i+"' class='pic' />");
+                    imagesToLoad++;
+                    $("#photo"+i)
+                        .attr("src", json.data[i].picture)
+                        .attr("title", json.data[i].name)
+                        .load(function(){imageLoaded(i);});
+                    console.log(json.data[i]);
+                }
+            });					
+        }
+    );    
 }
 function imageLoaded(i){
 	imagesToLoad--;
