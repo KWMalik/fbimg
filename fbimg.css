@@ -17,6 +17,7 @@ body{
 	width: 600px;
 	text-align: center;
 	margin: 0 auto;
+	position: relative;
 }
 #search input[type=text]{
 	height: 40px;
@@ -58,3 +59,12 @@ body{
 #footer a{
 	color: #777;
 }
+#smalllogo{
+	display: none;
+	position: absolute;
+	left: -200px;
+	top: 15px;
+	width: 88px;
+	height: 30px;
+}
+

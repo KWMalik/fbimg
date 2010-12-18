@@ -1,7 +1,7 @@
 var imagesToLoad = 0;
 $(document).ready(function(){
 	$("#searchbox").keypress(function(e){ if(e.which == 13) search($("#searchbox").val()); });
-	$("#searchbox").bind("focus", function(){$("#searchbox").val("");});
+	$("#searchbox").bind("focus", focusOnSearch);
 });
 function refresh(searchterm){
 	var limit = 200;
@@ -30,14 +30,25 @@ function imageLoaded(i){
 		searchEnd();
 	}
 }
+function focusOnSearch(){
+	$("#search input").css("color", "#333333");
+	$("#search input").val("");
+}
 function search(query){
     if (query == "") return false;
 	error.clear();
 	$("#header").slideUp();
     $("#imgs").html("");
+	if($("#imgs").html() != ""){
+		$("#imgs").slideUp(function(){
+			$("#imgs").html("");
+			$("#imgs").slideDown();
+		});
+	}
 	$("#search").fadeOut(function(){
+		$("#smalllogo").fadeIn();
 		$("#load").fadeIn(function(){
-			refresh(query);		
+			refresh(query);
 		});
 	});
 }
