@@ -1,5 +1,13 @@
 var imagesToLoad = 0;
 $(document).ready(function(){
+    FB.init({appId: '185935958086685', status: true, cookie: true, xfbml: true});
+    FB.Event.subscribe('auth.sessionChange', function(response) {
+        if (response.session) {
+        // A user has logged in, and a new cookie has been saved
+        } else {
+        // The user has logged out, and the cookie has been cleared
+        }
+    });
 	$("#searchbox").keypress(function(e){ if(e.which == 13) search($("#searchbox").val()); });
 	$("#searchbox").bind("focus", function(){$("#searchbox").val("");});
 });
