@@ -12,6 +12,7 @@ body{
 	height: 219px;
 	width: 646px;
 	text-align: center;
+	position: relative;
 }
 #search, #error, #imgs, #load{
 	width: 600px;
@@ -67,4 +68,8 @@ body{
 	width: 88px;
 	height: 30px;
 }
-
+.fb_button{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
